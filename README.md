@@ -8,7 +8,11 @@
 
 ## The Business Problem
 
-HR needed existing background reports alongside employee and applicant records. Similar names, reports still processing and interrupted browser sessions made it easy to select the wrong result or lose partially saved work. A report saved to storage also needed a malware check and restricted viewing before staff could use it.
+HR needs to review an applicant's existing background report alongside their onboarding documents. When that report stays in a separate provider portal, staff have to find the person, distinguish similar names, open the report's separate components and bring the right evidence into the employee record. A report still being processed must remain distinguishable from one ready for review.
+
+An interrupted browser session or failed upload can leave staff unsure which files were saved. Repeating the search adds work and can select a different report from the one originally reviewed. Saving a file also creates a separate responsibility: keep its ownership, report date and malware-check status clear before anyone opens it.
+
+The business need was a dependable path from an exact provider result to protected, reviewable evidence, with recovery that preserves completed work and avoids unnecessary repeat retrievals.
 
 ## The Solution
 
