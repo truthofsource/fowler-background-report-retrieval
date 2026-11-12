@@ -3,11 +3,14 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">=22"
+    "node": ">=22.13.0"
   },
   "scripts": {
-    "test": "node --test reference/*.test.mjs",
+    "test": "node --test reference/*.test.mjs tests/*.test.mjs",
     "demo": "node demo/run.mjs",
-    "preview": "node demo/server.mjs"
+    "preview": "node demo/server.mjs",
+    "pretest": "node scripts/build-reference.mjs --check",
+    "build:reference": "node scripts/build-reference.mjs --write",
+    "check:reference": "node scripts/build-reference.mjs --check"
   }
 }

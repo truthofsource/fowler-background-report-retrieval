@@ -1,5 +1,5 @@
 import {randomUUID} from 'node:crypto';
-import {createRetrieval,nextRetrieval,retrievalView} from '../reference/fowlerRetrieval.mjs';
+import {createRetrieval,nextRetrieval} from '../reference/fowlerRetrieval.mjs';
 const ids=()=>randomUUID(),now=new Date('2026-11-12T12:00:00Z');
 const staff={kind:'staff',id:ids()},worker={kind:'worker',id:ids()},employeeId=ids(),connectionRevision=ids();
 const scope={employeeId,applicationId:null},context={scope,connectionRevision,workerId:worker.id};

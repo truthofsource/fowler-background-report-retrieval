@@ -55,14 +55,15 @@ flowchart LR
   API --> Job[Manual Container Apps retrieval job]
   Vault[Key Vault: pinned credential version] --> Job
   Job --> Browser[Playwright: permitted provider pages]
-  Browser --> Capture[(Private immutable PDF checkpoint)]
+  Browser --> StageAPI[Functions API: verify captured files]
+  StageAPI --> Capture[(Private immutable PDF checkpoint)]
   Capture --> Intake[Document intake and part receipts]
   Intake --> Scan[Defender scan event / queue / processor]
   Scan --> Evidence[(Protected document records)]
   Evidence --> View[Authorized clean-file PDF viewer]
 ```
 
-The worker uses the API instead of receiving a SQL login. Its identity must match both its application role and configured worker identity. Request bodies cannot choose an arbitrary job, storage container or credential path.
+The worker sends capture bytes through the API; the deployment-owned Blob adapter verifies and writes the private checkpoint. The worker uses the API instead of receiving a SQL login. Its identity must match both its application role and configured worker identity. Request bodies cannot choose an arbitrary job, storage container or credential path.
 
 ## What Was Built
 
@@ -71,7 +72,7 @@ The worker uses the API instead of receiving a SQL login. Its identity must matc
 | Report candidate selection | Merging same-name people or choosing by row position | [Provider adapter](reference/report-retrieval.mjs) |
 | Durable state rules | Overlapping claims, late worker results and invalid transitions | [Extracted state model](reference/source/fowlerRetrieval.ts) |
 | Per-part evidence validation | Wrong hashes, missing components and mismatched record targets | [Evidence client](reference/careops-evidence.mjs) |
-| Manual worker infrastructure | Implicit scheduling and browser-supplied job overrides | [Related Terraform module](infra/modules/retrieval-worker/main.tf) |
+| Manual worker infrastructure | Defines one-shot execution and scoped job start; the full API separately rejects job overrides | [Related Terraform module](infra/modules/retrieval-worker/main.tf) |
 | Fictional local demonstration | Makes the process inspectable without credentials or provider calls | [Run it](demo/run.mjs) |
 
 The full SQL store, API authentication handlers, Blob adapter, React application and scan processor are not packaged as a standalone deployable application here. [Source map](docs/SOURCE-MAP.md) explains what is extracted and what remains part of the private platform.
@@ -79,12 +80,15 @@ The full SQL store, API authentication handlers, Blob adapter, React application
 ## Proof It Works
 
 ```bash
-# Node.js 22 or newer; no npm install or cloud credentials required
+# Node.js 22.13+; tested with 22.23.2 in .nvmrc
+# No npm install or cloud credentials required
 npm test
 npm run demo
 npm run preview
 # Open http://127.0.0.1:8788 and stop with Ctrl+C
 ```
+
+**Current local result: 27 tests passed** (18 extracted-source tests and 9 review regressions). The generated-code check also confirms the runnable model matches its TypeScript source.
 
 The offline tests exercise exact selection, ambiguous names, changed links and credentials, lease expiry, incomplete captures, partial-save recovery and safe staff projections. The demonstration uses synthetic file manifests and receipts; it does not pretend those files passed a live scanner. [Validation record](docs/VALIDATION.md) gives the exact results and limits.
 
@@ -116,4 +120,4 @@ Use a bounded worker pool with one valid lease per job, provider-rate limits and
 
 The related [Terraform extraction](infra/README.md) describes a Manual, zero-retry worker, its managed identity, exact-secret access, API role, private staging container and checkpoint retention. It has no environment defaults or runnable root. Do not apply it to an account whose lifecycle policy has another owner: that is an account-wide resource and all existing rules must be preserved.
 
-[Commands](docs/COMMANDS.md) · [Implementation](docs/IMPLEMENTATION.md) · [Source map](docs/SOURCE-MAP.md) · [Validation](docs/VALIDATION.md) · [Security](SECURITY.md)
+[Review and remaining limits](docs/REVIEW.md) · [Commands](docs/COMMANDS.md) · [Implementation](docs/IMPLEMENTATION.md) · [Source map](docs/SOURCE-MAP.md) · [Validation](docs/VALIDATION.md) · [Security](SECURITY.md)

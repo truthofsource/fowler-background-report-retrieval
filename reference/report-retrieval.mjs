@@ -22,7 +22,7 @@ export function reportUrl(value, kind) {
   try {
     const url = new URL(value);
     const route = routes[kind];
-    if (!route || url.origin !== origin || url.username || url.password || url.hash
+    if (!route || url.origin !== origin || url.username || url.password || url.hash || url.search
       || !url.pathname.startsWith(`${route}/`) || url.pathname.length <= route.length + 1) {
       fail('invalid_report_url');
     }

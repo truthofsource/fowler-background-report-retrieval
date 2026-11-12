@@ -16,7 +16,8 @@ function matchesTarget(result, target) {
 // Supply a delegated HR/Admin token in memory. Do not save it in receipts or a
 // provider browser. This client does not acquire permissions or persist secrets.
 export function createEvidenceClient({ apiBaseUrl, getAccessToken, fetchImpl = fetch }) {
-  const base = new URL(apiBaseUrl);
+  let base;
+  try { base = new URL(apiBaseUrl); } catch { invalid(); }
   if ((base.protocol !== 'https:' && !(base.protocol === 'http:' && ['127.0.0.1', 'localhost'].includes(base.hostname)))
     || base.username || base.password || base.search || base.hash || base.pathname !== '/' || typeof getAccessToken !== 'function') invalid();
   async function request(path, body) {

@@ -1,6 +1,6 @@
 {
   "date": "2026-11-12",
-  "nodeTests": 18,
+  "nodeTests": 27,
   "testFailures": 0,
   "terraformFilesParsed": [
     "infra/modules/retrieval-worker/main.tf",
@@ -49,7 +49,13 @@
   "hostedCIRun": false,
   "typescriptFullTypecheckPerformed": false,
   "notes": [
-    "State-model .mjs generated from selected TypeScript with TypeScript transpileModule; not a full private application build.",
-    "No live provider browsing, PDF rendering, scanner, SQL or Azure API test was performed."
-  ]
+    "Committed Node type-stripping script regenerates the selected state model and original tests; npm pretest verifies no source/runtime drift. This is not a full application typecheck.",
+    "Four Terraform files parsed and formatted; no provider-schema validation, plan or apply.",
+    "No live provider browsing, PDF capture, scanner, SQL or Azure API test was performed."
+  ],
+  "extractedSourceTests": 18,
+  "reviewRegressionTests": 9,
+  "sourceRuntimeDriftCheckPassed": true,
+  "nodeVersion": "22.23.2",
+  "reviewedAtUtc": "2026-11-12T21:54:02.114301+00:00"
 }

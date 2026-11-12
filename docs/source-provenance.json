@@ -5,7 +5,8 @@
       "source": "scripts/fowler/report-retrieval.mjs",
       "publicFile": "reference/report-retrieval.mjs",
       "sourceSha256": "7a1cfaf98e8e12969f18dc02c5b68fe45ad8c33c6bf23402908ef85280c3af22",
-      "publicSha256": "16750b1a547552bdd6f6b42814899a1118e8a35393f80b37c5b44b40f79a74c8"
+      "publicSha256": "c407a87fbb13c7cb11ab1cb01501b732ffb0c971927362b8562a17c624a671b9",
+      "reviewAdjustment": "Reject report URL query strings consistently with the state model."
     },
     {
       "source": "scripts/fowler/provider-target.mjs",
@@ -23,7 +24,8 @@
       "source": "scripts/fowler/careops-evidence.mjs",
       "publicFile": "reference/careops-evidence.mjs",
       "sourceSha256": "91976b1fa432cf9de8ebf4c86f1aa28e977078149bd9e269b36e956c23255fa1",
-      "publicSha256": "2a612b2b1a9ccb406219485107176e42222038616c9a70532ceee72ae871c890"
+      "publicSha256": "b822bb132e35530d5b8caf1bf7b7b9736046764143c06ae8bf297b020b803f82",
+      "reviewAdjustment": "Return a bounded invalid_evidence_request error for malformed base URLs."
     },
     {
       "source": "scripts/fowler/careops-evidence.test.mjs",

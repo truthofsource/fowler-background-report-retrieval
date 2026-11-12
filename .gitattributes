@@ -1,3 +1,4 @@
 * text=auto
 *.mjs text eol=lf
+*.ts text eol=lf
 *.tf text eol=lf
