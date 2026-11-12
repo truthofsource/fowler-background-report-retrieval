@@ -1,0 +1,71 @@
+{
+  "sourceCommit": "04b068366f0be3ac2bcb5636c51c9f0a26340f33",
+  "files": [
+    {
+      "source": "scripts/fowler/report-retrieval.mjs",
+      "publicFile": "reference/report-retrieval.mjs",
+      "sourceSha256": "7a1cfaf98e8e12969f18dc02c5b68fe45ad8c33c6bf23402908ef85280c3af22",
+      "publicSha256": "16750b1a547552bdd6f6b42814899a1118e8a35393f80b37c5b44b40f79a74c8"
+    },
+    {
+      "source": "scripts/fowler/provider-target.mjs",
+      "publicFile": "reference/provider-target.mjs",
+      "sourceSha256": "58397941990bca9638187be6405ea83a0b3c262ddef2f3e6925831a8a39943f2",
+      "publicSha256": "c93af835ccc371088db166c872e67c6543305b73d8f020d1cef1e2b8ec7bba6c"
+    },
+    {
+      "source": "scripts/fowler/applicant-candidates.test.mjs",
+      "publicFile": "reference/applicant-candidates.test.mjs",
+      "sourceSha256": "6b3fe7a31b73e7e31a3eec996cafc5daa8ce350fac07178e97d8b9a27e4cd0a2",
+      "publicSha256": "612ed509613279f6515c106d47c1ac4d112c8bacfad523fdb256b19589a445dc"
+    },
+    {
+      "source": "scripts/fowler/careops-evidence.mjs",
+      "publicFile": "reference/careops-evidence.mjs",
+      "sourceSha256": "91976b1fa432cf9de8ebf4c86f1aa28e977078149bd9e269b36e956c23255fa1",
+      "publicSha256": "2a612b2b1a9ccb406219485107176e42222038616c9a70532ceee72ae871c890"
+    },
+    {
+      "source": "scripts/fowler/careops-evidence.test.mjs",
+      "publicFile": "reference/careops-evidence.test.mjs",
+      "sourceSha256": "d4abb4b4273032df7d4ac7f5e9abc258618dcd6145a68732a94ec6d450c900ab",
+      "publicSha256": "004590d5e899c0bc512b05b344e52918158f6fde565a50e4d79fc50609c963dc"
+    },
+    {
+      "source": "apps/api/src/fowler/fowlerRetrieval.ts",
+      "publicFile": "reference/source/fowlerRetrieval.ts",
+      "sourceSha256": "9088555bc614e2665051d7b0e41859d843c5cc8598b6f62b29f92ac241fab625",
+      "publicSha256": "6d60fef28a52b02822a2e212b738e2f2a17b48803f4561d091b5ff4ed1af2a24"
+    },
+    {
+      "source": "apps/api/src/fowler/fowlerRetrieval.test.ts",
+      "publicFile": "reference/source/fowlerRetrieval.test.ts",
+      "sourceSha256": "ad05157bfa2a2d6b8e15360b498fc079ee8f8132c32908a21828c77e05fd7292",
+      "publicSha256": "4e3e556c8c240bb802c59860e8ce2b1d5802efbb956c5a04fb4a9ac77e6ee1a1"
+    },
+    {
+      "source": "infra/modules/fowler-retrieval-worker/main.tf",
+      "publicFile": "infra/modules/retrieval-worker/main.tf",
+      "sourceSha256": "f7772b57f89837cb2c3958f6dac076bd74c24072cd5c77720c504650489a6b34",
+      "publicSha256": "961c7e5b909108b5fd2e263de9c85b93b26ff21aba983583497d7dd018508cfe"
+    },
+    {
+      "source": "infra/modules/fowler-retrieval-worker/variables.tf",
+      "publicFile": "infra/modules/retrieval-worker/variables.tf",
+      "sourceSha256": "5e7aad60e0fc6ddeb978052e357b31d7ca7d7f989eb631f27692acb19b84e54f",
+      "publicSha256": "453288ef3c357bab2e2f96c54b59fffad183f23b8a28a8f1cf2b080479183602"
+    },
+    {
+      "source": "infra/modules/fowler-retrieval-worker/outputs.tf",
+      "publicFile": "infra/modules/retrieval-worker/outputs.tf",
+      "sourceSha256": "75c87b0d69ad52a1b150537ceed52d0997f9070d4eb282de99928934462bce1e",
+      "publicSha256": "abffdd1bbc36149732c6c733f088d7fe636543da7cfd4e35ef4abe3386c30d7e"
+    },
+    {
+      "source": "infra/modules/fowler-retrieval-worker/versions.tf",
+      "publicFile": "infra/modules/retrieval-worker/versions.tf",
+      "sourceSha256": "e28f2d2b88587c4ae52db7236560afe2cbf3848514b329fbd9624f8d50a7ea1f",
+      "publicSha256": "be1144b2e8915552c7b5204ec38ab8c3556f0f68faaaee0736f4a2d709d770c5"
+    }
+  ]
+}

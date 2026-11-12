@@ -1,0 +1,10 @@
+.terraform/
+*.tfstate*
+*.tfplan
+*.tfvars
+*.auto.tfvars.json
+node_modules/
+.env*
+.local/
+*.eml
+*.pdf

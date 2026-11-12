@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-12",
+  "nodeTests": 18,
+  "testFailures": 0,
+  "terraformFilesParsed": [
+    "infra/modules/retrieval-worker/main.tf",
+    "infra/modules/retrieval-worker/outputs.tf",
+    "infra/modules/retrieval-worker/variables.tf",
+    "infra/modules/retrieval-worker/versions.tf"
+  ],
+  "terraformFormatPassed": true,
+  "terraformProviderValidationPerformed": false,
+  "browserChecks": [
+    {
+      "width": 1440,
+      "overflow": false,
+      "realExtractedStateModel": true,
+      "finalState": "saved_for_scanning",
+      "receipts": 2
+    },
+    {
+      "width": 390,
+      "overflow": false,
+      "realExtractedStateModel": true,
+      "finalState": "saved_for_scanning",
+      "receipts": 2
+    }
+  ],
+  "demo": {
+    "mode": "Fictional local state-model demonstration; no provider, database or scanner calls",
+    "history": [
+      "lookup_queued",
+      "looking_up",
+      "choose_report",
+      "capture_queued",
+      "capturing",
+      "ready_to_save",
+      "ready_to_save",
+      "saving",
+      "saving",
+      "saving",
+      "saved_for_scanning"
+    ],
+    "finalState": "saved_for_scanning",
+    "receipts": 2,
+    "meaning": "Saved for scanning. This does not establish a clean file, a verified identity or an employment decision."
+  },
+  "cloudCallsPerformed": false,
+  "hostedCIRun": false,
+  "typescriptFullTypecheckPerformed": false,
+  "notes": [
+    "State-model .mjs generated from selected TypeScript with TypeScript transpileModule; not a full private application build.",
+    "No live provider browsing, PDF rendering, scanner, SQL or Azure API test was performed."
+  ]
+}
