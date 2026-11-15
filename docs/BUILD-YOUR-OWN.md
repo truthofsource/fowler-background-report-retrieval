@@ -1,103 +1,193 @@
-# Build your own: Fowler Background Reports: Reliable Retrieval and Protected Evidence
+# Build your own from scratch: Fowler Background Report Retrieval
 
-This is a step-by-step build guide for an independent learning copy. Follow the numbered steps in order and record your own results. The included local implementation is not a complete deployment of the private business platform; cloud extensions are separate and must use your own authorized resources.
+Your own saved-PDF retrieval exercise with an exact fictional person/reference, a protected local provider stub and a capture manifest.
 
-## What you will create
+Start with a new folder, your own files and your own accounts. The numbered steps below describe the build; no portfolio repository checkout is required. The existing implementation/evidence elsewhere in this repository is a separate reference, not a claim that your new build has already passed.
 
-A fictional checkpoint/retrieval model; no provider lookup or paid report order.
+## Prerequisites
 
-## Prerequisites and working locations
+Python, ReportLab, requests and pypdf in a virtual environment. The local stub has no Fowler credentials, provider login or paid order capability; live vendor integration requires your own approved provider contract/API.
 
-| Location | What you need |
-| --- | --- |
-| Your workstation | Git and the runtime versions documented in [the command guide](COMMANDS.md); use its package/lockfile instructions. |
-| Bash, Linux or WSL terminal | The commands below use Bash syntax. Prepare the compatible Node.js version documented by the project; use the project's pinned dependency files. |
-| PowerShell alternative | Use the PowerShell forms in the command guide, or run this Bash recipe in WSL; do not paste Bash loops into PowerShell. |
-| Azure or external service | Not needed for default local tests. Any cloud extension requires your own account, target, permissions, budget and acceptance plan. |
+Use Bash on Linux/macOS/WSL for Bash blocks and PowerShell for PowerShell blocks. Select the tool versions supported by the official sources below, record the versions you actually install and retain generated dependency locks. Cloud resources, scanner downloads, logs and external AI calls can create costs; review the stated scope before enabling them.
 
-Read [the existing validation scope](VALIDATION.md) before running anything. A recorded historical test result is not evidence that your new copy has passed.
+## Create your project folder
 
-## Step 1: Create your own workspace
-
-**Where:** your workstation, in a new project folder.
-
-1. Clone the public source below into a new directory; keep the source attribution and included license terms. This creates your local learning copy, not cloud resources.
-2. Record the selected commit and tool versions before editing. If you later publish a fork, review any origin, hash or target bindings rather than disabling guards to make the fork pass.
+Choose a new folder name. These first commands create a blank project; an optional `git init` gives it its own history. Create parent directories in your editor when a later step introduces a nested file.
 
 ```bash
-git clone https://github.com/truthofsource/fowler-background-report-retrieval.git
-cd fowler-background-report-retrieval
-git rev-parse HEAD
-git rev-parse --show-toplevel
-git status --short
+mkdir my-fowler-background-report-retrieval
+cd my-fowler-background-report-retrieval
+git init
 ```
 
-**Expected result:** the project files are present and you can identify the starting source. Continue from this repository root unless a command explicitly changes directory.
+Create `.gitignore` before saving credentials or build outputs:
 
-## Step 2: Prepare dependencies and build the local baseline
+```gitignore
+.venv/
+node_modules/
+.env
+.env.*
+local.settings.json
+credentials.json
+token.json
+*.pem
+*.key
+*.tfstate*
+*.tfplan
+.terraform/
+private*/
+captures/
+backups/
+batch.json
+reports/
+out/
+app-config.local.yaml
+```
 
-**Where:** the same workstation terminal.
+The source/file snippets are a starting implementation you type or paste into the named files. Replace `YOUR_*`, names, regions and addresses only with values from your own lab; do not place real client/employee records in a test project. Keep your terminal in this project root unless a step explicitly changes directory.
 
-1. Follow the runtime instructions and install only the dependencies selected by this project's files. Terraform provider downloads, optional browser downloads and scanner databases are separate prerequisites where the detailed guide identifies them.
-2. Run these source-derived baseline commands one at a time and stop on an unexpected failure. Read any skipped integration cases; a skip is not a successful live check.
+Before a first commit, set your own repository-local author with `git config user.name "YOUR_NAME"` and `git config user.email "YOUR_PUBLIC_COMMIT_EMAIL"`. Review `git status --short` and the staged diff before publishing; ignored local files are not a substitute for reviewing what you upload.
+
+## Step 1 — Define the report ownership contract
+
+**Where:** A new request.json file.
+
+Write a stable fictional employee ID, provider reference and expected source host, keeping report creation/order separate from retrieval. A name match alone must not choose a background report.
+
+Create **`request.json`** with the following contents:
+
+```json
+{"employee_id":"LAB-001","provider_reference":"REPORT-001","source":"local-provider-stub"}
+```
+
+**Check before continuing:** You can identify the exact permitted person/report pair.
+
+## Step 2 — Create a PDF you own
+
+**Where:** Your new project folder.
+
+Install the libraries below and create make_report.py. This PDF is fictional test content, so no report or employee finding is published.
 
 ```bash
-npm test
-npm run demo
+python3 -m venv .venv
+.venv/bin/python -m pip install reportlab requests pypdf
+.venv/bin/python -m pip freeze > requirements.lock.txt
 ```
 
-**Expected result:** the selected tests finish without unexpected failures, and a demonstration command, where provided, produces fictional local decisions. These commands reproduce the included lab scope; they do not commission the live platform.
+Create **`make_report.py`** with the following contents:
 
-## Step 3: Make one project-specific change
+```python
+from pathlib import Path
+from reportlab.pdfgen import canvas
+Path('provider').mkdir(exist_ok=True)
+c = canvas.Canvas('provider/report.pdf')
+c.drawString(72, 740, 'FICTIONAL REPORT - LAB-001 - REPORT-001')
+c.drawString(72, 710, 'Retrieval test only; no real background finding.')
+c.save()
+```
 
-**Where:** your editor, in your own local copy.
+**Check before continuing:** provider/report.pdf is a real parseable PDF.
 
-1. Start with [`tests/report-boundaries.test.mjs`](../tests/report-boundaries.test.mjs) and the matching test or configuration instructions. Add an interrupted-save or wrong-person test and confirm only the same accepted capture can resume.
-2. Save your new case separately from the original acceptance records, then rerun the affected tests and the baseline. Do not edit recorded scanner results, screenshots or validation counts to manufacture a successful outcome.
+## Step 3 — Start your local provider stub
 
-**Expected result:** you can explain what you changed, why the result changed and which negative case still fails safely. An unexpected failure means investigate the implementation or setup, not remove the failing check.
+**Where:** One terminal in the project root.
 
-## Step 4: Verify behavior and capture your own evidence
-
-**Where:** the test output, local viewer where supplied, and your private evidence folder.
-
-1. If the project supplies a viewer, use its startup command in [the command guide](COMMANDS.md); keep long-running preview servers in a separate terminal. Follow its exact loopback address and stop it with Ctrl+C when finished; for a command-line-only example, inspect its terminal output and generated files instead.
-2. Compare your own output with [the proof and limits](../README.md#proof-it-works), then record source version, command, expected result, observed result and unresolved work. Capture screenshots of your own fictional output rather than presenting the existing screenshots as your execution.
-
-**Expected result:** A fictional checkpoint/retrieval model; no provider lookup or paid report order. Your evidence must say whether it covers local logic, a real tool run, a hosted service or a human observation.
-
-### Start the local preview
-
-Open a second terminal in the same repository root printed by `git rev-parse --show-toplevel`. Run the command below from that root, after the baseline has passed; it stays running while you use the preview.
+Generate the PDF, then serve only the provider directory on loopback. This is a controlled file source for your worker, not a vendor authentication simulation.
 
 ```bash
-npm run preview
+.venv/bin/python make_report.py
+.venv/bin/python -m http.server 8890 --bind 127.0.0.1 --directory provider
 ```
 
-Open [http://127.0.0.1:8788](http://127.0.0.1:8788). Use the exact hostname shown here; a localhost address and a 127.0.0.1 address are not interchangeable for every project's host checks.
+**Check before continuing:** The PDF is available only through your local test endpoint.
 
-This is the project's local Node preview. Run it with the same Node/npm installation used for the baseline; it does not publish the app or require an Azure sign-in.
+## Step 4 — Write your bounded retriever
 
-Keep one preview per listening port. Stop your own earlier preview with Ctrl+C before starting another one on that port, or use only a port override documented by the project. If you stop the preview, rerun only its startup command; you do not need to rebuild or redeploy cloud services.
+**Where:** Your editor.
 
-## Step 5: Plan an independent cloud extension, if needed
+Create retrieve.py below. It limits the downloaded bytes, refuses redirects, parses the PDF and binds the saved copy to the fictional request; it does not infer a finding from the PDF text.
 
-**Where:** your own architecture/configuration files first; a separately authorized lab subscription only later.
+Create **`retrieve.py`** with the following contents:
 
-1. Read the implementation and infrastructure references linked below. Substitute your own names, identities, address ranges and service settings in an isolated environment; a public reference may contain only selected components and is not authority to apply someone else's production state.
-2. List the missing integrations and acceptance checks before deployment: runtime hosting, permissions, network/DNS paths, secrets, source data, notification or provider access as applicable. Keep disabled examples disabled until their specific dependencies, costs and cleanup are understood.
+```python
+from pathlib import Path
+from datetime import datetime, timezone
+import hashlib, io, json
+import requests
+from pypdf import PdfReader
+request = json.loads(Path('request.json').read_text())
+if request != {'employee_id':'LAB-001','provider_reference':'REPORT-001','source':'local-provider-stub'}:
+    raise ValueError('Review the exact fictional request before adapting this example')
+r = requests.get('http://127.0.0.1:8890/report.pdf', timeout=20, stream=True, allow_redirects=False)
+if r.status_code != 200: raise ValueError('PDF retrieval failed')
+data = bytearray()
+for part in r.iter_content(65536):
+    data.extend(part)
+    if len(data) > 10 * 1024 * 1024: raise ValueError('PDF exceeds limit')
+pdf = PdfReader(io.BytesIO(data), strict=True)
+if pdf.is_encrypted or not 1 <= len(pdf.pages) <= 100: raise ValueError('Unsupported PDF')
+Path('captures').mkdir(exist_ok=True)
+with Path('captures/LAB-001-REPORT-001.pdf').open('xb') as output: output.write(data)
+manifest = {**request, 'retrieved_at': datetime.now(timezone.utc).isoformat(),
+            'sha256': hashlib.sha256(data).hexdigest(), 'pages': len(pdf.pages)}
+with Path('captures/LAB-001-REPORT-001.json').open('x') as output: json.dump(manifest, output, indent=2)
+print({'saved': True, 'pages': len(pdf.pages)})
+```
 
-**Expected result:** a scoped extension plan with owners and explicit acceptance criteria, not a claim that the full service is deployed. No cloud `apply`, scanner targeting, paid operation or provider sign-in is implied by the local recipe.
+**Check before continuing:** The retriever records a person/reference/hash and refuses an existing capture filename.
 
-- [Implementation](IMPLEMENTATION.md)
-- [Validation](VALIDATION.md)
-- [Source Map](SOURCE-MAP.md)
+## Step 5 — Run and inspect your saved evidence
 
-## Step 6: Troubleshoot, close out and explain what you built
+**Where:** Second terminal in the same folder.
 
-**Where:** your project folder and the operating guide for any environment you actually created.
+Run the retriever, open the saved PDF and compare the manifest hash with the captured bytes. Retry without deleting the prior capture to verify overwrite protection; on a partial/unknown save, inspect the files and reconcile rather than blindly ordering or retrieving again.
 
-1. Check the failing stage in order: working directory and runtime, dependencies, test input, configuration, then any separately enabled service. Preserve the error and consult the existing troubleshooting lessons before widening permissions or changing the target.
-2. Stop only the viewers/containers you started, retain your useful evidence and remove only resources belonging to your own reviewed lab. A local-only run needs no cloud deletion; if you created cloud resources, verify residual storage/address/monitoring charges rather than assuming compute stop removes all cost.
+```bash
+.venv/bin/python retrieve.py
+sha256sum captures/LAB-001-REPORT-001.pdf
+```
 
-**Finish checklist:** explain the business problem, show your own change and verification, describe one failure/recovery case, identify limitations and name the next owner action. Keep credentials and business records out of public commits and screenshots.
+**Check before continuing:** Your saved report and manifest match the exact fictional request.
+
+## Step 6 — Define the live-provider and access extensions
+
+**Where:** Your worker/API design.
+
+Replace the stub only after obtaining your own approved provider interface and exact-record authorization. Add malware scanning, a durable atomic capture/checkpoint, same-capture recovery, duplicate locking, protected PDF access and safe failure stages before calling it a production retrieval service.
+
+**Check before continuing:** The tutorial's completed capture and the additional live-service controls are clearly separated.
+
+## Step 7 — Record and close the lab
+
+**Where:** Your terminals and files.
+
+Save a value-free flow diagram and your successful/duplicate-failure observations, then stop the stub with Ctrl+C. Retain or remove only the fictional captures according to your lab retention decision.
+
+**Check before continuing:** The reader can create the PDF source and retrieval worker without your existing report records.
+
+## Verification and your own screenshots
+
+| Evidence | What to record | Your result |
+| --- | --- | --- |
+| New build | Your own files/resource settings and tool versions | Not yet recorded |
+| Working path | The actual successful request, configuration or recovery result | Not yet recorded |
+| Failure boundary | A meaningful denied, malformed, stale or failed case | Not yet recorded |
+| Recovery / cleanup | What you restored or removed and what remains billed | Not yet recorded |
+
+Capture your own architecture/configuration, one working result and one failure/recovery result. Keep tokens, credentials, personal records and private identifiers out of public screenshots. Existing portfolio images are references, not evidence that you performed these steps.
+
+## Troubleshooting order
+
+1. Confirm the named file, working directory and selected tool/interpreter.
+2. Check the exact input and resource/account selected for the failing step.
+3. Separate identity permission, network/DNS reachability and application validation.
+4. Keep the actual error and reconcile an unknown write outcome before repeating it; do not widen access or repeat paid operations blindly.
+
+The numbered steps describe a build procedure. Local syntax checks, an accepted API request, a completed hosted operation and a human verification are different evidence levels; fill in the verification table with what you actually observed.
+
+## Official implementation references
+
+- [requests.readthedocs.io — advanced](https://requests.readthedocs.io/en/latest/user/advanced/)
+- [pypdf.readthedocs.io — stable](https://pypdf.readthedocs.io/en/stable/)
+
+The walkthrough layout follows the prerequisites → creation/configuration → test → verification → troubleshooting → cleanup pattern of the [Splunk project reference](https://github.com/davidharris6/splunk-siem-log-analysis). Its Splunk-specific settings are not copied into unrelated projects.
