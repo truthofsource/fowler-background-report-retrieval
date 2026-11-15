@@ -1,10 +1,12 @@
 # Fowler Background Reports: Reliable Retrieval and Protected Evidence
 
+[![Fowler report retrieval — illustrated overview](docs/diagrams/architecture.png)](docs/diagrams/architecture.svg)
+
+[View SVG](docs/diagrams/architecture.svg) · [Download PNG](docs/diagrams/architecture.png) · [Edit in draw.io](docs/diagrams/architecture.drawio)
+
 **Find the right existing report, save every part and recover interrupted work without ordering or searching again.**
 
 [The problem](#the-business-problem) · [The solution](#the-solution) · [What was built](#what-was-built) · [Proof it works](#proof-it-works) · [Step by step](#step-by-step)
-
-![Fictional local report-retrieval demonstration](docs/images/01-overview.png)
 
 ## The Business Problem
 
@@ -20,7 +22,7 @@ I implemented a Fowler integration in an Azure workforce and operations platform
 
 **Business outcome:** Bring existing reports into the employee's record with clearer ownership, fewer repeated retrieval steps and a reliable recovery path. This is a qualitative implementation outcome; no time-saving percentage is claimed.
 
-This public project includes selected implementation source and original offline tests. Deployment targets are replaced with examples, and applicant data, credentials and report contents are excluded. The local screenshots use fictional information; they are not screenshots of a live employee report.
+This public project includes selected implementation source and original offline tests. Deployment targets are replaced with examples, and applicant data, credentials and report contents are excluded. The local demonstration uses fictional information; proper application screenshots are deferred.
 
 ## Tools Used and What They Do
 
@@ -233,7 +235,7 @@ Save a value-free flow diagram and your successful/duplicate-failure observation
 | Failure boundary | A meaningful denied, malformed, stale or failed case | Not yet recorded |
 | Recovery / cleanup | What you restored or removed and what remains billed | Not yet recorded |
 
-Capture your own architecture/configuration, one working result and one failure/recovery result. Keep tokens, credentials, personal records and private identifiers out of public screenshots. Existing portfolio images are references, not evidence that you performed these steps.
+Capture your own architecture/configuration, one working result and one failure/recovery result. Keep tokens, credentials, personal records and private identifiers out of public screenshots. The architecture diagram explains the design; record your own results rather than treating it as execution evidence.
 
 ### Troubleshooting order
 
@@ -268,20 +270,7 @@ The walkthrough layout follows the prerequisites → creation/configuration → 
 
 ## Architecture
 
-```mermaid
-flowchart LR
-  Staff[HR / Admin selects person] --> API[Functions API: roles / links / revisions]
-  API <--> SQL[(SQL jobs and history)]
-  API --> Job[Manual Container Apps retrieval job]
-  Vault[Key Vault: pinned credential version] --> Job
-  Job --> Browser[Playwright: permitted provider pages]
-  Browser --> StageAPI[Functions API: verify captured files]
-  StageAPI --> Capture[(Private immutable PDF checkpoint)]
-  Capture --> Intake[Document intake and part receipts]
-  Intake --> Scan[Defender scan event / queue / processor]
-  Scan --> Evidence[(Protected document records)]
-  Evidence --> View[Authorized clean-file PDF viewer]
-```
+[View the illustrated project overview](docs/diagrams/architecture.svg).
 
 The worker sends capture bytes through the API; the deployment-owned Blob adapter verifies and writes the private checkpoint. The worker uses the API instead of receiving a SQL login. Its identity must match both its application role and configured worker identity. Request bodies cannot choose an arbitrary job, storage container or credential path.
 

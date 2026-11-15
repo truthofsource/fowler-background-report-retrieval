@@ -1,5 +1,7 @@
 # Validation — November 12, 2026
 
+> Placeholder screenshots were removed on November 15, 2026. Written test results below retain their original dates and scope; historical screenshot references describe earlier captures. Proper Azure and application screenshots are deferred. The illustrated architecture is a source-based explanation, not a live-service screenshot.
+
 - **27 Node tests passed**: 18 original extracted-source tests plus 9 review regression tests, with no skipped or failed cases.
 - The local demonstration ran the extracted state model through report selection and two synthetic part receipts to `saved_for_scanning`.
 - Headless Edge checked the local page at 1440px and 390px, with nonlocal requests blocked; neither layout overflowed, and the linked JSON demonstration returned the expected state/receipts.
