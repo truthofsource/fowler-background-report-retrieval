@@ -40,6 +40,19 @@ The connection-check job and report-retrieval job are separate. Checking a saved
 
 ## Step by Step
 
+Build an independent version with the [reader-operated walkthrough](docs/BUILD-YOUR-OWN.md). It gives prerequisites, working locations, numbered actions, source-derived commands, expected results, verification and cleanup.
+
+For this project, your working starting point is [`tests/report-boundaries.test.mjs`](tests/report-boundaries.test.mjs). Expected scope: A fictional checkpoint/retrieval model; no provider lookup or paid report order.
+
+1. **Create your own workspace.** Copy the project and record the source version before editing.
+2. **Prepare and run the baseline.** Use the documented runtimes and selected dependencies, then run the local checks.
+3. **Make your own change.** Edit a project-specific fixture, configuration or rule and rerun its positive and negative cases.
+4. **Verify and document your result.** Capture your own evidence and distinguish a local example from a live integration.
+5. **Extend and close out deliberately.** Plan any independent cloud work separately and clean up only what you created.
+
+<details>
+<summary>How the underlying platform process works</summary>
+
 1. **Choose the person** — Open the employee or applicant record and start retrieval from that exact record. The server keeps the target link with the job and checks it again before accepting changes.
 
 2. **Find an existing report** — The worker returns the provider's displayed candidates, report references and processing status. Staff compare the exact result; a surname or list position alone cannot select it.
@@ -49,6 +62,8 @@ The connection-check job and report-retrieval job are separate. Checking a saved
 4. **Save and recover safely** — Staff request saving and the application retains each verified document receipt. An interrupted save resumes that same capture instead of generating new PDFs or repeating provider lookup.
 
 5. **Wait for file checks and review** — The saved files enter the malware-check path before protected viewing. HR reviews the report separately; neither a clean scan nor a saved PDF makes an employment decision.
+
+</details>
 
 ## Architecture
 
