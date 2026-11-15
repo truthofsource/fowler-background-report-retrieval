@@ -40,7 +40,7 @@ The connection-check job and report-retrieval job are separate. Checking a saved
 
 ## Step by Step
 
-Build an independent version with the [reader-operated walkthrough](docs/BUILD-YOUR-OWN.md). It gives prerequisites, working locations, numbered actions, source-derived commands, expected results, verification and cleanup.
+Build an independent version with the [step-by-step build guide](docs/BUILD-YOUR-OWN.md). It gives prerequisites, working locations, numbered actions, source-derived commands, expected results, verification and cleanup.
 
 For this project, your working starting point is [`tests/report-boundaries.test.mjs`](tests/report-boundaries.test.mjs). Expected scope: A fictional checkpoint/retrieval model; no provider lookup or paid report order.
 
